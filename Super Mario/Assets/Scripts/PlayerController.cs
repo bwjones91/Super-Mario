@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour {
     public float radius;
     public LayerMask groundMask;
 
+    Animator anim;
+
+
+
 
     bool isGrounded;
     Rigidbody2D rb2d;
@@ -18,6 +22,8 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -32,6 +38,8 @@ public class PlayerController : MonoBehaviour {
 
 	void FixedUpdate()
     {
+        anim.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
+
         float move = Input.GetAxis("Horizontal");
         Debug.Log(move);
         rb2d.velocity = new Vector2(move * maxSpeed * .1f, rb2d.velocity.y);
