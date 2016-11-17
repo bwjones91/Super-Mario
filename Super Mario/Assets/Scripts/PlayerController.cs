@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour {
     {
         anim.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
 
+        anim.SetBool("Grounded", isGrounded);
+
         float move = Input.GetAxis("Horizontal");
         //Debug.Log(move);
         rb2d.velocity = new Vector2(move * maxSpeed * .1f, rb2d.velocity.y);
