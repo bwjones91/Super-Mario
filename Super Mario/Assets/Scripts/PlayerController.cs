@@ -4,18 +4,39 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 
     public float maxSpeed = 1f;
+    public float jumpHeight = 200f;
     bool facingRight = true;
+
+    public Transform groundPoint;
+    public float radius;
+    public LayerMask groundMask;
+
+
+    bool isGrounded;
+    Rigidbody2D rb2d;
 
     void Start()
     {
+        rb2d = GetComponent<Rigidbody2D>();
+    }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))// && isGrounded)
+        {
+            rb2d.AddForce(new Vector2(0, jumpHeight));
+        }
+
+      
     }
 
 	void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal");
         Debug.Log(move);
-        GetComponent<Rigidbody2D>().velocity = new Vector2(move * maxSpeed * .1f, GetComponent<Rigidbody2D>().velocity.y);
+        rb2d.velocity = new Vector2(move * maxSpeed * .1f, rb2d.velocity.y);
+
+        isGrounded = Physics2D.OverlapCircle(groundPoint.position, radius, groundMask);
 
         if (move > 0 && !facingRight)
         {
