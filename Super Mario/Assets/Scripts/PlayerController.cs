@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 	void FixedUpdate()
     {
         float move = Input.GetAxis("Horizontal");
-        Debug.Log(move);
+        //Debug.Log(move);
         rb2d.velocity = new Vector2(move * maxSpeed * .1f, rb2d.velocity.y);
 
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, radius, groundMask);
