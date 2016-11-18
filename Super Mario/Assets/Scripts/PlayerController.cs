@@ -10,12 +10,14 @@ public class PlayerController : MonoBehaviour {
     public Transform groundPoint;
     public float radius;
     public LayerMask groundMask;
+    public float jumpHoldDuration = 2;
 
     Animator anim;
 
 
-
-
+    bool jumpInput;
+    bool jumpHoldInput;
+    bool jumpHold;
     bool isGrounded;
     Rigidbody2D rb2d;
 
@@ -28,10 +30,26 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+      
+
+        if (Input.GetKey(KeyCode.RightShift))
         {
-            rb2d.AddForce(new Vector2(0, jumpHeight));
+            maxSpeed = 20;
         }
+        else maxSpeed = 10;
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            jumpInput = true;
+        }
+
+
+        if (Input.GetKey(KeyCode.Space))
+        {
+            jumpHoldInput = true;
+        }
+        else jumpHoldInput = false;
+     
 
       
     }
@@ -52,6 +70,25 @@ public class PlayerController : MonoBehaviour {
         }
         else if (move < 0 && facingRight)
             Flip();
+
+        if (jumpInput)
+        {
+            jumpInput = false;
+            if (isGrounded)
+            {
+                print("jump");
+                rb2d.velocity = new Vector2(rb2d.velocity.x, jumpHeight);
+                jumpHold = true;
+                Invoke("EndJumpHold", jumpHoldDuration);
+            }
+            else print("couldnt jump");
+        }
+
+        if (jumpHoldInput)
+        {
+            if(!isGrounded && jumpHold == true)
+            rb2d.AddForce(new Vector2(0, 10));
+        }
     }
 
     void Flip()
@@ -61,4 +98,17 @@ public class PlayerController : MonoBehaviour {
         theScale.x *= -1;
         transform.localScale = theScale;
     }
+
+    void OnCollisionEnter2d(Collision2D coll)
+    {
+        Debug.Log("collide test");
+      
+    }
+
+    void EndJumpHold()
+    {
+        jumpHold = false;
+    }
+
+
 }
