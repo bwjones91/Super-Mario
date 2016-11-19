@@ -20,7 +20,7 @@ public class GoombaCombat : MonoBehaviour {
         {
             Vector3 goombaPosition = this.transform.position;
             Vector3 marioPosition = coll.gameObject.transform.position;
-            if (marioPosition.y > goombaPosition.y)
+            if (marioPosition.y > goombaPosition.y+.1)
             {
                 Destroy(gameObject);
             }
