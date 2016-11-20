@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class GoombaMovement : MonoBehaviour {
+public class Patrol : MonoBehaviour {
 
 
     public float moveSpeed = 1f;

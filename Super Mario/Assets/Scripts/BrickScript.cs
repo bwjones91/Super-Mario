@@ -15,14 +15,4 @@ public class BrickScript : MonoBehaviour {
         }
     }
     
-    /*
-    void OnTriggerEnter2D(Collider2D hitInfo)
-    {
-        if (hitInfo.name == "Mario")
-        {
-            Destroy(gameObject);
-            Debug.Log("anything");
-        }
-    }
-    */
 }

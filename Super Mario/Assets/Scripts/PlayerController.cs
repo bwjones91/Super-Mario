@@ -3,7 +3,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 
-    public float maxSpeed = 1f;
+    private float runSpeed;
+    public float regularSpeed;
+    public float boostedSpeed;
     public float jumpHeight = 200f;
     bool facingRight = true;
 
@@ -30,13 +32,13 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-      
+
 
         if (Input.GetKey(KeyCode.RightShift))
         {
-            maxSpeed = 20;
+            runSpeed = boostedSpeed;
         }
-        else maxSpeed = 10;
+        else runSpeed = regularSpeed;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -58,9 +60,11 @@ public class PlayerController : MonoBehaviour {
     {
         anim.SetFloat("Speed", Mathf.Abs(Input.GetAxis("Horizontal")));
 
+        anim.SetBool("Grounded", isGrounded);
+
         float move = Input.GetAxis("Horizontal");
         //Debug.Log(move);
-        rb2d.velocity = new Vector2(move * maxSpeed * .1f, rb2d.velocity.y);
+        rb2d.velocity = new Vector2(move * runSpeed * .1f, rb2d.velocity.y);
 
         isGrounded = Physics2D.OverlapCircle(groundPoint.position, radius, groundMask);
 
