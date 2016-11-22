@@ -10,8 +10,11 @@ public class BrickScript : MonoBehaviour {
         Debug.Log("collide test");
         if (coll.gameObject.tag == "Player")
         {
-            Debug.Log("something");
-            Destroy(gameObject);
+            if (coll.gameObject.transform.position.y < transform.position.y)
+            {
+                Debug.Log("something");
+                Destroy(gameObject);
+            }
         }
     }
     

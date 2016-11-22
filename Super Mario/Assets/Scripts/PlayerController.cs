@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public float regularSpeed;
     public float boostedSpeed;
     public float jumpHeight = 200f;
+    public float move;
     bool facingRight = true;
 
     public Transform groundPoint;
@@ -26,7 +27,6 @@ public class PlayerController : MonoBehaviour {
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
-
         anim = GetComponent<Animator>();
     }
 
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour {
 
         anim.SetBool("Grounded", isGrounded);
 
-        float move = Input.GetAxis("Horizontal");
+        move = Input.GetAxis("Horizontal");
         //Debug.Log(move);
         rb2d.velocity = new Vector2(move * runSpeed * .1f, rb2d.velocity.y);
 
