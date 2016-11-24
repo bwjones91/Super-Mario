@@ -23,9 +23,11 @@ public class QuestionMarkBox : MonoBehaviour
             Vector3 blockPosition = this.transform.position;
             Vector3 marioPosition = coll.gameObject.transform.position;
 
-            if (marioPosition.y < blockPosition.y - height / 2)
+            if (marioPosition.y < blockPosition.y - (height / 2))
             {
                 Instantiate(prefab, new Vector3(transform.position.x, transform.position.y + height, 0), Quaternion.identity);
+                Rigidbody2D marioRB2D = coll.gameObject.GetComponent<Rigidbody2D>();
+                marioRB2D.velocity = new Vector2(marioRB2D.velocity.x, -2);
             }
 
         }
