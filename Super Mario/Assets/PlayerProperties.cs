@@ -19,8 +19,11 @@ public class PlayerProperties : MonoBehaviour {
     public GameObject projectileFire;
     public Transform projectileSocketRight;
     public Transform projectileSocketLeft;
-    public Material materialMarioStandard;
-    public Material materialMarioFire;
+    public Sprite spriteMarioSmall;
+    public Sprite spriteMarioBig;
+    public Sprite spriteMarioFire;
+    public Sprite spriteMarioDead;
+  
 
     public bool changeMario = false;
     public bool hasFire = false;
@@ -28,10 +31,21 @@ public class PlayerProperties : MonoBehaviour {
     private int numFireBalls = 2;
     private int coinLife = 100;
     private bool canShoot = false;
+    private SpriteRenderer spriteRenderer;
+   
+
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
 
     void Update()
     {
-        SetPlayerState();
+        if (changeMario)
+        {
+            SetPlayerState();
+            changeMario = false;
+        }
     }
 
     void AddCoin(int numCoin)
@@ -45,15 +59,19 @@ public class PlayerProperties : MonoBehaviour {
         {
             case PlayerState.MarioSmall:
                 print("mario is small");
+                spriteRenderer.sprite = spriteMarioSmall;
                 break;
             case PlayerState.MarioBig:
                 print("mario is big");
+                spriteRenderer.sprite = spriteMarioBig;
                 break;
             case PlayerState.MarioFire:
                 print("mario is fire");
+                spriteRenderer.sprite = spriteMarioFire;
                 break;
             case PlayerState.MarioDead:
                 print("mario is dead");
+                spriteRenderer.sprite = spriteMarioDead;
                 break;
         }
     }
