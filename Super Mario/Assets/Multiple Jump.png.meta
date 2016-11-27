@@ -1,10 +1,11 @@
 fileFormatVersion: 2
-guid: 981843518b2c04343bf2c3d3ee590ff8
-timeCreated: 1479414341
+guid: 9dd8008a0f80d9e41a0a921fc3a7e7d9
+timeCreated: 1479779743
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Mario Jump_0
+    21300000: Multiple Jump_0
+    21300002: Multiple Jump_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -54,10 +55,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mario Jump_0
+      name: Multiple Jump_0
       rect:
         serializedVersion: 2
         x: 0
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Multiple Jump_1
+      rect:
+        serializedVersion: 2
+        x: 16
         y: 0
         width: 16
         height: 16
