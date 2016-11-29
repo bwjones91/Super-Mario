@@ -11,6 +11,10 @@ public class PlayerProperties : MonoBehaviour {
         MarioFire = 3
     }
 
+    Animator anim;
+
+    
+
     public PlayerState myPlayerState = PlayerState.MarioSmall;
 
 
@@ -36,11 +40,16 @@ public class PlayerProperties : MonoBehaviour {
 
     void Start()
     {
+        anim = GetComponent<Animator>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        anim.SetInteger("State", (int)myPlayerState);
+
+
         if (changeMario)
         {
             SetPlayerState();
