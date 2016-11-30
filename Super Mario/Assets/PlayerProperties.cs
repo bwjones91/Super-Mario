@@ -36,6 +36,10 @@ public class PlayerProperties : MonoBehaviour {
     private int coinLife = 100;
     private bool canShoot = false;
     private SpriteRenderer spriteRenderer;
+    private PolygonCollider2D myPolygonCollider2D;
+    private CircleCollider2D myCircleCollider2D;
+    private BoxCollider2D myBoxcollider2D;
+    private GameObject groundCheck;
    
 
     void Start()
@@ -43,6 +47,10 @@ public class PlayerProperties : MonoBehaviour {
         anim = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        myPolygonCollider2D = GetComponent<PolygonCollider2D>();
+        myCircleCollider2D = GetComponent<CircleCollider2D>();
+        myBoxcollider2D = GetComponent<BoxCollider2D>();
+        groundCheck = GameObject.Find("groundCheck");
     }
 
     void Update()
@@ -68,19 +76,23 @@ public class PlayerProperties : MonoBehaviour {
         {
             case PlayerState.MarioSmall:
                 print("mario is small");
-                spriteRenderer.sprite = spriteMarioSmall;
+                
                 break;
             case PlayerState.MarioBig:
                 print("mario is big");
-                spriteRenderer.sprite = spriteMarioBig;
+                myPolygonCollider2D.offset = new Vector2(myPolygonCollider2D.offset.x, myPolygonCollider2D.offset.y + .08F);
+                myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y - .1F);
+                myBoxcollider2D.size = new Vector2(myBoxcollider2D.size.x, myBoxcollider2D.size.y + .2F);
+                groundCheck.transform.position = new Vector2(groundCheck.transform.position.x, groundCheck.transform.position.y - .09F);
+
                 break;
             case PlayerState.MarioFire:
                 print("mario is fire");
-                spriteRenderer.sprite = spriteMarioFire;
+     
                 break;
             case PlayerState.MarioDead:
                 print("mario is dead");
-                spriteRenderer.sprite = spriteMarioDead;
+
                 break;
         }
     }
