@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3dd7998590d211241a0baea41e67cf0b
-timeCreated: 1480705097
+timeCreated: 1480708580
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -91,45 +91,6 @@ TextureImporter:
         x: 40
         y: 0
         width: 11
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mario Running_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 12
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mario Running_4
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 0
-        width: 13
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: Mario Running_5
-      rect:
-        serializedVersion: 2
-        x: 64
-        y: 0
-        width: 16
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
