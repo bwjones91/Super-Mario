@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour {
     public float boostedSpeed;
     public float jumpHeight = 200f;
     public float move;
-    bool facingRight = true;
+    public bool facingRight { get; private set; }
 
     public Transform groundPoint;
     public float radius;
@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour {
 
     void Start()
     {
+        facingRight = true;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
     }
