@@ -35,6 +35,7 @@ public class PlayerProperties : MonoBehaviour {
     private CircleCollider2D myCircleCollider2D;
     private BoxCollider2D myBoxcollider2D;
     private GameObject groundCheck;
+    private GameObject fireball;
     private PlayerController playerController;
    
 
@@ -60,6 +61,14 @@ public class PlayerProperties : MonoBehaviour {
         {
             SetPlayerState();
             changeMario = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightShift))
+        {
+            if (hasFire)
+            {
+                ShootFireball();
+            }
         }
     }
 
@@ -87,7 +96,17 @@ public class PlayerProperties : MonoBehaviour {
     {
         if(GameObject.FindGameObjectsWithTag("Fireball").Length < 2)
         {
-          // if(playerController.facing)
+            fireball = (GameObject)Instantiate(projectileFire, new Vector3(projectileSocketLeft.position.x, projectileSocketLeft.position.y, 0), Quaternion.identity);
+            if (playerController.facingRight)
+            {
+                //spawn fireball right
+                fireball.GetComponent<fireballController>().moveSpeed = -3;
+              }
+            else
+            {
+                //spawn fireball left
+                fireball.GetComponent<fireballController>().moveSpeed = 3;
+            }
         }
     }
 
@@ -101,7 +120,7 @@ public class PlayerProperties : MonoBehaviour {
                 myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y + .1F);
                 myBoxcollider2D.size = new Vector2(myBoxcollider2D.size.x, myBoxcollider2D.size.y - .2F);
                 groundCheck.transform.position = new Vector2(groundCheck.transform.position.x, groundCheck.transform.position.y + .09F);
-
+                hasFire = false;
                 break;
             case PlayerState.MarioBig:
                 print("mario is big");
@@ -109,7 +128,7 @@ public class PlayerProperties : MonoBehaviour {
                 myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y - .1F);
                 myBoxcollider2D.size = new Vector2(myBoxcollider2D.size.x, myBoxcollider2D.size.y + .2F);
                 groundCheck.transform.position = new Vector2(groundCheck.transform.position.x, groundCheck.transform.position.y - .09F);
-
+                hasFire = false;
                 break;
             case PlayerState.MarioFire:
                 hasFire = true;

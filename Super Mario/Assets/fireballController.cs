@@ -3,7 +3,14 @@ using System.Collections;
 
 public class fireballController : MonoBehaviour {
 
-    public float moveSpeed = 3f;
+    private float mMoveSpeed;
+
+    public float moveSpeed
+    {
+        get { return mMoveSpeed; }
+        set { mMoveSpeed = value; }
+    }
+
     Rigidbody2D rb2d;
 
     public Transform wallCheck;
@@ -26,9 +33,9 @@ public class fireballController : MonoBehaviour {
         hittingWall = Physics2D.OverlapCircle(wallCheck.position, wallCheckRadius, whatIsWall);
 
         if (hittingWall)
-            moveSpeed = -moveSpeed;
+            mMoveSpeed = -mMoveSpeed;
 
-        Vector2 moveDir = new Vector2(-moveSpeed, rb2d.velocity.y);
+        Vector2 moveDir = new Vector2(-mMoveSpeed, rb2d.velocity.y);
         rb2d.velocity = moveDir;
 
     }
