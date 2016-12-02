@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 3dd7998590d211241a0baea41e67cf0b
-timeCreated: 1479354704
+timeCreated: 1480705097
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -59,19 +59,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Mario Running_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 12
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
       name: Mario Running_1
       rect:
         serializedVersion: 2
@@ -104,6 +91,19 @@ TextureImporter:
         x: 40
         y: 0
         width: 11
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Mario Running_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 12
         height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
