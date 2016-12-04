@@ -12,7 +12,7 @@ public class BrickScript : MonoBehaviour {
            
             if (coll.gameObject.transform.position.y < transform.position.y)
             {
-                if (coll.gameObject.GetComponent<PlayerProperties>().myPlayerState == PlayerProperties.PlayerState.MarioSmall)
+                if (!(coll.gameObject.GetComponent<PlayerProperties>().myPlayerState == PlayerProperties.PlayerState.MarioSmall))
                 {
                     Destroy(gameObject);
                 }

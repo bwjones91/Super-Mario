@@ -93,7 +93,7 @@ public class PlayerProperties : MonoBehaviour {
 
     public void ShootFireball()
     {
-        if(GameObject.FindGameObjectsWithTag("Fireball").Length < 2)
+        if(GameObject.FindGameObjectsWithTag("Fireball").Length < numFireBallsOnScreen)
         {
             fireball = (GameObject)Instantiate(projectileFire, new Vector3(projectileSocketLeft.position.x, projectileSocketLeft.position.y, 0), Quaternion.identity);
             if (playerController.facingRight)

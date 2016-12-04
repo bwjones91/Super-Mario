@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour {
 
     Animator anim;
 
+    bool duckInput;
 
     bool jumpInput;
     bool jumpHoldInput;
@@ -24,11 +25,19 @@ public class PlayerController : MonoBehaviour {
     bool isGrounded;
     Rigidbody2D rb2d;
 
+    PlayerProperties playerProperties;
+    BoxCollider2D boxCollider2D;
+    PolygonCollider2D polygonCollider2D;
+
+
     void Start()
     {
         facingRight = true;
         rb2d = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        playerProperties = GetComponent<PlayerProperties>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+        polygonCollider2D = GetComponent<PolygonCollider2D>();
     }
 
     void Update()
@@ -52,6 +61,17 @@ public class PlayerController : MonoBehaviour {
             jumpHoldInput = true;
         }
         else jumpHoldInput = false;
+
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            enterDuck();
+        }
+        if (Input.GetKeyUp(KeyCode.S))
+        { 
+             exitDuck();
+        }
+
+
      
 
       
@@ -113,6 +133,18 @@ public class PlayerController : MonoBehaviour {
     void EndJumpHold()
     {
         jumpHold = false;
+    }
+
+    void enterDuck()
+    {
+        boxCollider2D.enabled = false;
+        polygonCollider2D.enabled = false;
+    }
+
+    void exitDuck()
+    {
+        boxCollider2D.enabled = true;
+        polygonCollider2D.enabled = true;
     }
 
 
