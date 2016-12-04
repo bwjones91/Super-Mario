@@ -13,7 +13,7 @@ public class PlayerProperties : MonoBehaviour {
 
     Animator anim;
 
-    private PlayerState myPlayerState;
+    public PlayerState myPlayerState { get; private set; }
    
 
 
@@ -55,7 +55,6 @@ public class PlayerProperties : MonoBehaviour {
     void Update()
     {
         anim.SetInteger("State", (int)myPlayerState);
-        print(myPlayerState);
 
         if (changeMario)
         {

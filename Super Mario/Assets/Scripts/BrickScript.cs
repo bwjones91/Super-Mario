@@ -9,9 +9,17 @@ public class BrickScript : MonoBehaviour {
     {
         if (coll.gameObject.tag == "Player")
         {
+           
             if (coll.gameObject.transform.position.y < transform.position.y)
             {
-                Destroy(gameObject);
+                if (coll.gameObject.GetComponent<PlayerProperties>().myPlayerState == PlayerProperties.PlayerState.MarioSmall)
+                {
+                    Destroy(gameObject);
+                }
+                 else
+                {
+
+                } 
             }
             Rigidbody2D marioRB2D = coll.gameObject.GetComponent<Rigidbody2D>();
             marioRB2D.velocity = new Vector2(marioRB2D.velocity.x, -1);

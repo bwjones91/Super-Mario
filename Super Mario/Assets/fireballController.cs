@@ -38,6 +38,8 @@ public class fireballController : MonoBehaviour {
         Vector2 moveDir = new Vector2(-mMoveSpeed, rb2d.velocity.y);
         rb2d.velocity = moveDir;
 
+        
+
     }
 
     void OnDrawGizmos()
@@ -54,4 +56,11 @@ public class fireballController : MonoBehaviour {
             rb2d.velocity = new Vector2(rb2d.velocity.x, fireballHeight);
         }
     }
+
+    void OnBecameInvisible()
+    {
+        print("out of view");
+        Destroy(this.gameObject);
+    }
+
 }
