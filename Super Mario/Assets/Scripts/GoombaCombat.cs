@@ -3,9 +3,15 @@ using System.Collections;
 
 public class GoombaCombat : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-       
+
+
+    private PlayerProperties playerProperties;
+    private GameObject mario;
+
+    // Use this for initialization
+    void Start () {
+        mario = GameObject.FindGameObjectWithTag("Player");
+        playerProperties = mario.GetComponent<PlayerProperties>();
     }
 	
 	// Update is called once per frame
@@ -21,15 +27,19 @@ public class GoombaCombat : MonoBehaviour {
         {
             Vector3 goombaPosition = this.transform.position;
             Vector3 marioPosition = coll.gameObject.transform.position;
-            if (marioPosition.y > goombaPosition.y + (height/2))
+            Vector2 marioGroundPosition = GameObject.FindGameObjectWithTag("GroundCheck").transform.position;
+            if (marioGroundPosition.y > goombaPosition.y + height/3)
             {
+              
                 Destroy(gameObject);
             }
             else
             {
-                Destroy(coll.gameObject);
+                playerProperties.ShrinkPlayerState();
             }
             print(height);
+            print(marioGroundPosition.y);
+            print(goombaPosition.y);
         }
     }
 }

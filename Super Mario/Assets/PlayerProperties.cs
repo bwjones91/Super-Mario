@@ -27,6 +27,7 @@ public class PlayerProperties : MonoBehaviour {
     private bool changeMario = false;
     private bool hasFire = false;
 
+    private bool invulnerable = false;
     private int numFireBallsOnScreen = 2;
     private int coinLife = 100;
     private bool canShoot = false;

@@ -8,15 +8,11 @@ public class MushroomInteraction : MonoBehaviour
     private PlayerProperties playerProperties;
     private GameObject mario;
 
-    void Swake()
-    {
-        print("awake");
-    }
 
     void Start()
     {
         cameraTarget = GameObject.Find("cameraTarget");
-        mario = GameObject.Find("Mario");
+        mario = GameObject.FindGameObjectWithTag("Player");
         playerProperties = mario.GetComponent<PlayerProperties>();
         print("started");
     }
