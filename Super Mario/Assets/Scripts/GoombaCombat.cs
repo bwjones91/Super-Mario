@@ -23,7 +23,7 @@ public class GoombaCombat : MonoBehaviour {
     {
         var collider2D = gameObject.GetComponent<Collider2D>();
         float height = collider2D.bounds.size.y;
-        if (coll.gameObject.tag == "Player")
+        if (coll.gameObject.tag == "Player" && !playerProperties.invulnerable)
         {
             Vector3 goombaPosition = this.transform.position;
             Vector3 marioPosition = coll.gameObject.transform.position;

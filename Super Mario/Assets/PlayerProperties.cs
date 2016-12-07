@@ -16,7 +16,7 @@ public class PlayerProperties : MonoBehaviour {
     public PlayerState myPlayerState { get; private set; }
    
 
-
+    public bool invulnerable { get; private set; }
     public int lives = 3;
     public int coins = 0;
     public GameObject projectileFire;
@@ -27,7 +27,7 @@ public class PlayerProperties : MonoBehaviour {
     private bool changeMario = false;
     private bool hasFire = false;
 
-    private bool invulnerable = false;
+   
     private int numFireBallsOnScreen = 2;
     private int coinLife = 100;
     private bool canShoot = false;
@@ -88,8 +88,22 @@ public class PlayerProperties : MonoBehaviour {
 
     public void ShrinkPlayerState()
     {
-        myPlayerState--;
+        if (myPlayerState == PlayerState.MarioFire)
+        {
+            myPlayerState -= 2;
+        }
+        else
+        {
+            myPlayerState--;
+        }
         changeMario = true;
+        invulnerable = true;
+        Invoke("resetInvulnerability", 3);
+    }
+
+    private void resetInvulnerability()
+    {
+        invulnerable = false;
     }
 
     public void ShootFireball()
