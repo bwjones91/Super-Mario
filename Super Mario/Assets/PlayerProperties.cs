@@ -98,12 +98,14 @@ public class PlayerProperties : MonoBehaviour {
         }
         changeMario = true;
         invulnerable = true;
+        Physics2D.IgnoreLayerCollision(10, 12);
         Invoke("resetInvulnerability", 3);
     }
 
     private void resetInvulnerability()
     {
         invulnerable = false;
+       
     }
 
     public void ShootFireball()
@@ -131,7 +133,7 @@ public class PlayerProperties : MonoBehaviour {
             case PlayerState.MarioSmall:
                 print("mario is small");
                 myPolygonCollider2D.offset = new Vector2(myPolygonCollider2D.offset.x, myPolygonCollider2D.offset.y - .08F);
-                myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y + .1F);
+                myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y + .075F);
                 myBoxcollider2D.size = new Vector2(myBoxcollider2D.size.x, myBoxcollider2D.size.y - .2F);
                 groundCheck.transform.position = new Vector2(groundCheck.transform.position.x, groundCheck.transform.position.y + .09F);
                 hasFire = false;
@@ -139,7 +141,7 @@ public class PlayerProperties : MonoBehaviour {
             case PlayerState.MarioBig:
                 print("mario is big");
                 myPolygonCollider2D.offset = new Vector2(myPolygonCollider2D.offset.x, myPolygonCollider2D.offset.y + .08F);
-                myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y - .1F);
+                myCircleCollider2D.offset = new Vector2(myCircleCollider2D.offset.x, myCircleCollider2D.offset.y - .075F);
                 myBoxcollider2D.size = new Vector2(myBoxcollider2D.size.x, myBoxcollider2D.size.y + .2F);
                 groundCheck.transform.position = new Vector2(groundCheck.transform.position.x, groundCheck.transform.position.y - .09F);
                 hasFire = false;
