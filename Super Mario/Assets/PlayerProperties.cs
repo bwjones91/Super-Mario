@@ -38,10 +38,18 @@ public class PlayerProperties : MonoBehaviour {
     private GameObject groundCheck;
     private GameObject fireball;
     private PlayerController playerController;
+
+    private Color invisible = new Color(1, 1, 1, 0);
+    private Color visible = new Color(1, 1, 1, 1);
+    private IEnumerator coroutine;
+    private bool isVisible = true;
+    private Renderer rend;
    
 
     void Start()
     {
+        coroutine = flash();
+        rend = GetComponent<Renderer>();
         changeMario = false;
         myPlayerState = PlayerState.MarioSmall;
         anim = GetComponent<Animator>();
@@ -55,6 +63,8 @@ public class PlayerProperties : MonoBehaviour {
 
     void Update()
     {
+
+        
         anim.SetInteger("State", (int)myPlayerState);
 
         if (changeMario)
@@ -100,12 +110,27 @@ public class PlayerProperties : MonoBehaviour {
         invulnerable = true;
         Physics2D.IgnoreLayerCollision(10, 12);
         Invoke("resetInvulnerability", 3);
+        StartCoroutine(coroutine);
     }
 
     private void resetInvulnerability()
     {
         invulnerable = false;
-       
+        Physics2D.IgnoreLayerCollision(10, 12,false);
+        isVisible = true;
+        rend.enabled = true;
+        StopCoroutine(coroutine);
+    }
+
+    private IEnumerator flash()
+    {
+        while (true)
+        {
+            bool oddeven = Mathf.FloorToInt(Time.time*100) % 2 == 0;
+            rend.enabled = oddeven;
+            yield return null;
+        }
+        
     }
 
     public void ShootFireball()
